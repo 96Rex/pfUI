@@ -59,8 +59,11 @@ pfUI:RegisterSkin("Inspect", "tbc", function ()
       StripTextures(InspectPaperDollFrame)
 
       EnableClickRotate(InspectModelFrame)
-      InspectModelRotateLeftButton:Hide()
-      InspectModelRotateRightButton:Hide()
+	  
+	  local leftBtn = InspectModelFrameRotateLeftButton or InspectModelRotateLeftButton
+	  local rightBtn = InspectModelFrameRotateRightButton or InspectModelRotateRightButton
+	  if leftBtn then leftBtn:Hide() end
+	  if rightBtn then rightBtn:Hide() end
 
       for _, slot in pairs(slots) do
         local frame = _G["Inspect"..slot]
@@ -158,8 +161,11 @@ pfUI:RegisterSkin("Inspect", "vanilla", function ()
       StripTextures(InspectPaperDollFrame)
 
       EnableClickRotate(InspectModelFrame)
-      InspectModelRotateLeftButton:Hide()
-      InspectModelRotateRightButton:Hide()
+      
+	  local leftBtn = InspectModelFrameRotateLeftButton or InspectModelRotateLeftButton
+	  local rightBtn = InspectModelFrameRotateRightButton or InspectModelRotateRightButton
+	  if leftBtn then leftBtn:Hide() end
+	  if rightBtn then rightBtn:Hide() end
 
       for _, slot in pairs(slots) do
         local frame = _G["Inspect"..slot]
