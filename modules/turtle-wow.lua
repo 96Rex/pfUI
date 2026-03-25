@@ -283,16 +283,26 @@ pfUI:RegisterModule("turtle-wow", "vanilla", function ()
       hooksecurefunc("InspectFrame_Show", function()
         -- break if theres nothing left to do
         if initialized then return end
-
+		
+		-- arena button
         -- adjust ui positions
         SkinTab(InspectFrameTab3)
         InspectFrameTab3:ClearAllPoints()
-        InspectFrameTab3:SetPoint("LEFT", InspectFrameTab2, "RIGHT", GetBorderSize()*2 + 1, 0)
-        TWTalentFrameTab1:SetPoint("TOPLEFT", TWTalentFrameScrollFrame, "TOPLEFT", 2, TWTalentFrameTab1:GetHeight() + 4)
-
+        InspectFrameTab3:SetPoint("LEFT", InspectFrameTab2, "RIGHT", GetBorderSize()*2 + 1, 0)		
         -- reload text position
         InspectFrameTab3:Hide()
         InspectFrameTab3:Show()
+
+		-- talent button
+        -- adjust ui positions
+        SkinTab(InspectFrameTab4)
+        InspectFrameTab4:ClearAllPoints()
+        InspectFrameTab4:SetPoint("LEFT", InspectFrameTab3, "RIGHT", GetBorderSize()*2 + 1, 0)
+        TWTalentFrameTab1:SetPoint("TOPLEFT", TWTalentFrameScrollFrame, "TOPLEFT", 2, TWTalentFrameTab1:GetHeight() + 4)
+        -- reload text position
+        InspectFrameTab4:Hide()
+        InspectFrameTab4:Show()
+
 
         -- skin inspect window elements
         StripTextures(InspectTalentsFrame)
@@ -303,7 +313,7 @@ pfUI:RegisterModule("turtle-wow", "vanilla", function ()
         end
 
         -- skin each talent button
-        for i = 1, MAX_NUM_TALENTS do
+        for i = 1, (MAX_NUM_TALENTS or 100) do
           local talent = _G["TWTalentFrameTalent" .. i]
           if talent then
             StripTextures(talent)
