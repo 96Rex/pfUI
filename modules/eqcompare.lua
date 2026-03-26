@@ -38,8 +38,9 @@ pfUI:RegisterModule("eqcompare", "vanilla", function ()
     end
 
     -- add label to first line
-    _G[name.."TextLeft1"]:SetTextColor(.5, .5, .5, 1)
+    _G[name.."TextLeft1"]:SetTextColor(1, 0.8, 0, 1)
     _G[name.."TextLeft1"]:SetText(CURRENTLY_EQUIPPED)
+	_G[name.."TextLeft1"]:SetFont("Fonts\\FRIZQT__.TTF", 14)
     _G[name.."TextLeft1"]:Show()
 
     -- update tooltip sizes
