@@ -1,7 +1,7 @@
 -- skip module initialization on every other client than turtle-wow
 if not TargetHPText or not TargetHPPercText then return end
 
-pfUI:RegisterModule("turtle-wow", "vanilla", function ()
+pfUI:RegisterModule("turtle-wow", function ()
   -- custom debuff durations
   L["debuffs"]["Hand of Reckoning"] = {[0]=3.0}
   L["debuffs"]['Insect Swarm'] = {[0]=18.0}

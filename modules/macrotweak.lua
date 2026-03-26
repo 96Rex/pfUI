@@ -1,4 +1,4 @@
-pfUI:RegisterModule("macrotweak", "vanilla", function ()
+pfUI:RegisterModule("macrotweak", function ()
   -- do not write macro calls into chat input history
   if ChatFrameEditBox._AddHistoryLine then
     local userinput

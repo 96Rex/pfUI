@@ -1,4 +1,4 @@
-pfUI:RegisterModule("nameplates", "vanilla:tbc", function ()
+pfUI:RegisterModule("nameplates", function ()
   -- disable original castbars
   pcall(SetCVar, "ShowVKeyCastbar", 0)
 
