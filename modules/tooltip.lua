@@ -272,6 +272,5 @@ pfUI:RegisterModule("tooltip", function ()
         pfUI.tooltipStatusBar.HP:SetText(hp .. " / " .. hpm)
       end
       GameTooltip:Show()
-	  print(pvptitle)
     end
 end)
