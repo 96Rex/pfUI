@@ -2,9 +2,9 @@ pfUI:RegisterSkin("Character", function ()
   local rawborder, border = GetBorderSize()
   local bpad = rawborder > 1 and border - GetPerfectPixel() or GetPerfectPixel()
 
-  -- Compatibility
-  if PlayerTitleDropDown then -- tbc, wotlk
-    -- Character Tab
+  -- 称号兼容性
+  if PlayerTitleDropDown then -- TBC
+    -- 角色选项卡
     SkinDropDown(PlayerTitleDropDown)
     PlayerTitleDropDown:SetPoint("TOP", CharacterLevelText, "BOTTOM", 0, -2)
     PlayerTitleDropDownText:SetPoint("LEFT", PlayerTitleDropDown.backdrop, "LEFT", 6, 2)
@@ -21,7 +21,7 @@ pfUI:RegisterSkin("Character", function ()
     CreateBackdrop(HonorFrameProgressBar)
     HonorFrameProgressBar:SetHeight(24)
   end
-
+	--法术抗性材质定位
   local magicResTextureCords = {
     {0.21875, 0.78125, 0.25, 0.3203125},
     {0.21875, 0.78125, 0.0234375, 0.09375},
@@ -29,13 +29,16 @@ pfUI:RegisterSkin("Character", function ()
     {0.21875, 0.78125, 0.36328125, 0.43359375},
     {0.21875, 0.78125, 0.4765625, 0.546875}
   }
-
+	--更改背景
   CreateBackdrop(CharacterFrame, nil, nil, .75)
   CreateBackdropShadow(CharacterFrame)
-
-  CharacterFrame.backdrop:SetPoint("TOPLEFT", 10, -10)
-  CharacterFrame.backdrop:SetPoint("BOTTOMRIGHT", -30, 72)
-  CharacterFrame:SetHitRectInsets(10,30,10,72)
+	--设置背景左边距和上边距偏移
+  CharacterFrame.backdrop:SetPoint("TOPLEFT", 13, 0)
+  	--设置背景右边距和下边距偏移
+  CharacterFrame.backdrop:SetPoint("BOTTOMRIGHT", -34, 82)
+    --点击区域偏移(内嵌:左下上右)
+  CharacterFrame:SetHitRectInsets(13,34,0,82)
+    --禁用可移动性
   EnableMovable("CharacterFrame", nil, CHARACTERFRAME_SUBFRAMES)
 
   SkinCloseButton(CharacterFrameCloseButton, CharacterFrame.backdrop, -6, -6)

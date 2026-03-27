@@ -231,9 +231,6 @@ pfUI:RegisterModule("tooltip", function ()
           GameTooltipStatusBar:SetStatusBarColor_orig(color.r, color.g, color.b)
           GameTooltip:SetBackdropBorderColor(color.r, color.g, color.b)
         end
-        if pvptitle ~= name and pvptitle ~= "" then
-          GameTooltip:AppendText(" |cff666666["..pvptitle.."]|r")
-        end
 		if pvptitle ~= name and pvptitle ~= "" then
 		  -- 使用 gsub 将空格替换为"]["
 		  local formattedTitle = "[" .. gsub(pvptitle, "%s+", "][") .. "]"
