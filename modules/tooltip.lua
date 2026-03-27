@@ -211,8 +211,9 @@ pfUI:RegisterModule("tooltip", function ()
       local _, class = UnitClass(unit)
       local guild, rankstr, rankid = GetGuildInfo(unit)
       local reaction = UnitReaction(unit, "player")
-      local pvptitle = gsub(gsub(pvpname or name, name, "", 1), "^%s*(.-)%s*$", "%1")
-      local hp = UnitHealth(unit)
+	  -- 使用 gsub 将"\n"(回车)替换为""(空文本)
+	  local pvptitle = gsub(gsub(gsub(pvpname or name, name, "", 1), "^%s*(.-)%s*$", "%1"),"\n","")
+	  local hp = UnitHealth(unit)
       local hpm = UnitHealthMax(unit)
 
       if name then
@@ -233,6 +234,11 @@ pfUI:RegisterModule("tooltip", function ()
         if pvptitle ~= name and pvptitle ~= "" then
           GameTooltip:AppendText(" |cff666666["..pvptitle.."]|r")
         end
+		if pvptitle ~= name and pvptitle ~= "" then
+		  -- 使用 gsub 将空格替换为"]["
+		  local formattedTitle = "[" .. gsub(pvptitle, "%s+", "][") .. "]"
+		  GameTooltip:AppendText(" |cff666666" .. formattedTitle .. "|r")
+		end
       end
 
       if guild then
@@ -266,5 +272,6 @@ pfUI:RegisterModule("tooltip", function ()
         pfUI.tooltipStatusBar.HP:SetText(hp .. " / " .. hpm)
       end
       GameTooltip:Show()
+	  print(pvptitle)
     end
 end)
