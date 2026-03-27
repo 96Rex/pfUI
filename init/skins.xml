@@ -17,7 +17,10 @@
   <Include file="..\skins\blizzard\mail.lua"/>
   <Include file="..\skins\blizzard\merchant.lua"/>
   <Include file="..\skins\blizzard\miscellaneous.lua"/>
-  <Include file="..\skins\blizzard\options.lua"/>
+  <Include file="..\skins\blizzard\options-interface.lua"/>
+  <Include file="..\skins\blizzard\options-sound.lua"/>
+  <Include file="..\skins\blizzard\options-video.lua"/>
+  <Include file="..\skins\blizzard\options-turtlewow.lua"/>
   <Include file="..\skins\blizzard\petition.lua"/>
   <Include file="..\skins\blizzard\popup_dialogs.lua"/>
   <Include file="..\skins\blizzard\professions.lua"/>

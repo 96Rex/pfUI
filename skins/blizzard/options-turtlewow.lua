@@ -1,4 +1,4 @@
-pfUI:RegisterSkin("设置窗口", function ()
+pfUI:RegisterSkin("options-turtlewow", function ()
   if not OptionsFrame or not OptionsFrameCategoryList then return end
   local rawborder, border = GetBorderSize()
   local bpad = rawborder > 1 and border - GetPerfectPixel() or GetPerfectPixel()
