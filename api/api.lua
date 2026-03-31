@@ -919,22 +919,17 @@ function pfUI.api.rgbhex(r, g, b, a)
   return ""
 end
 
--- [ GetBorderSize ]
--- Returns the configure value of a border and its pixel scaled version.
--- 'pref' allows to specifiy a custom border (i.e unitframes, panel)
+-- [ 获取边框大小 ]
+-- 返回设置的边框大小的值以及像素缩放后的值(用于清晰化显示)
+-- pref为指定自定义边框类型
 function pfUI.api.GetBorderSize(pref)
   if not pfUI.borders then pfUI.borders = {} end
-
-  -- set to default border if accessing a wrong border type
   if not pref or not pfUI_config.appearance.border[pref] or pfUI_config.appearance.border[pref] == "-1" then
     pref = "default"
   end
-
   if pfUI.borders[pref] then
-    -- return already cached values
     return pfUI.borders[pref][1], pfUI.borders[pref][2]
   else
-    -- add new borders to the pfUI tree
     local raw = tonumber(pfUI_config.appearance.border[pref])
     if raw == -1 then raw = 3 end
 

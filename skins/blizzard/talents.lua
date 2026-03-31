@@ -3,24 +3,19 @@ pfUI:RegisterSkin("Talents", function ()
   local bpad = rawborder > 1 and border - GetPerfectPixel() or GetPerfectPixel()
 
   HookAddonOrVariable("Blizzard_TalentUI", function()
-    -- Compatibility
-    local TALENT_FRAME, TALENT_FRAME_NAME
-    if PlayerTalentFrame then -- tbc
-      TALENT_FRAME = _G.PlayerTalentFrame
-    else -- vanilla
-      TALENT_FRAME = _G.TalentFrame
-    end
-    TALENT_FRAME_NAME = TALENT_FRAME:GetName()
 
+    local TALENT_FRAME, TALENT_FRAME_NAME
+    TALENT_FRAME = _G.TalentFrame
+    TALENT_FRAME_NAME = TALENT_FRAME:GetName()
 
     StripTextures(TALENT_FRAME)
     CreateBackdrop(TALENT_FRAME, nil, nil, .75)
     CreateBackdropShadow(TALENT_FRAME)
 
-    TALENT_FRAME.backdrop:SetPoint("TOPLEFT", 10, -10)
-    TALENT_FRAME.backdrop:SetPoint("BOTTOMRIGHT", -32, 72)
-    TALENT_FRAME:SetHitRectInsets(10,32,10,72)
-    EnableMovable(TALENT_FRAME)
+    TALENT_FRAME.backdrop:SetPoint("TOPLEFT", 13, 0)
+    TALENT_FRAME.backdrop:SetPoint("BOTTOMRIGHT", -34, 82)
+    TALENT_FRAME:SetHitRectInsets(13,34,0,82)
+    -- EnableMovable(TALENT_FRAME)
 
     TALENT_FRAME:DisableDrawLayer("BACKGROUND")
     _G[TALENT_FRAME_NAME.."CancelButton"]:Hide()

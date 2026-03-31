@@ -7,10 +7,10 @@ pfUI:RegisterSkin("Friends", function ()
   CreateBackdrop(FriendsFrame, nil, nil, .75)
   CreateBackdropShadow(FriendsFrame)
 
-  FriendsFrame.backdrop:SetPoint("TOPLEFT", 8, -10)
-  FriendsFrame.backdrop:SetPoint("BOTTOMRIGHT", -32, 74)
-  FriendsFrame:SetHitRectInsets(8,32,10,74)
-  EnableMovable("FriendsFrame")
+  FriendsFrame.backdrop:SetPoint("TOPLEFT", 13, 0)
+  FriendsFrame.backdrop:SetPoint("BOTTOMRIGHT", -34, 82)
+  FriendsFrame:SetHitRectInsets(13,34,0,82)
+  -- EnableMovable("FriendsFrame")
 
   SkinCloseButton(FriendsFrameCloseButton, FriendsFrame.backdrop, -6, -6)
 
