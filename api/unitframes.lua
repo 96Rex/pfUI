@@ -2517,7 +2517,7 @@ function pfUI.uf:GetStatusValue(unit, pos)
   elseif config == "healthmax" then
     return unit:GetColor("health") .. pfUI.api.Abbreviate(rhpmax)
   elseif config == "healthperc" then
-    return unit:GetColor("health") .. ceil(hp / hpmax * 100)
+    return unit:GetColor("health") .. ceil(hp / hpmax * 100) .. "%"
   elseif config == "healthmiss" then
     local health = ceil(rhp - rhpmax)
     if UnitIsDead(unitstr) then
@@ -2529,7 +2529,7 @@ function pfUI.uf:GetStatusValue(unit, pos)
     end
   elseif config == "healthdyn" then
     if hp ~= hpmax then
-      return unit:GetColor("health") .. pfUI.api.Abbreviate(rhp) .. " - " .. ceil(hp / hpmax * 100) .. "%"
+      return unit:GetColor("health") .. ceil(hp / hpmax * 100) .. "%"
     else
       return unit:GetColor("health") .. pfUI.api.Abbreviate(rhp)
     end
@@ -2570,7 +2570,7 @@ function pfUI.uf:GetStatusValue(unit, pos)
     return unit:GetColor("power") .. pfUI.api.Abbreviate(mpmax)
   elseif config == "powerperc" then
     local perc = UnitManaMax(unitstr) > 0 and ceil(mp / mpmax * 100) or 0
-    return unit:GetColor("power") .. perc
+    return unit:GetColor("power") .. perc .. "%"
   elseif config == "powermiss" then
     local power = ceil(mp - mpmax)
     if power == 0 then
@@ -2581,7 +2581,7 @@ function pfUI.uf:GetStatusValue(unit, pos)
   elseif config == "powerdyn" then
     -- show percentage when only mana is less than 100%
     if mp ~= mpmax and UnitPowerType(unitstr) == 0 then
-      return unit:GetColor("power") .. pfUI.api.Abbreviate(mp) .. " - " .. ceil(mp / mpmax * 100) .. "%"
+      return unit:GetColor("power") .. ceil(mp / mpmax * 100) .. "%"
     else
       return unit:GetColor("power") .. pfUI.api.Abbreviate(mp)
     end
