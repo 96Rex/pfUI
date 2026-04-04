@@ -1,4 +1,4 @@
-\pfUI:RegisterSkin("Options - Interface", function ()
+pfUI:RegisterSkin("Options - Interface", function ()
   if OptionsFrameCategoryList then return end
   local rawborder, border = GetBorderSize()
   local bpad = rawborder > 1 and border - GetPerfectPixel() or GetPerfectPixel()

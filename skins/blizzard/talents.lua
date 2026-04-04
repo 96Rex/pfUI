@@ -14,7 +14,7 @@ pfUI:RegisterSkin("Talents", function ()
 
     TALENT_FRAME.backdrop:SetPoint("TOPLEFT", 13, 0)
     TALENT_FRAME.backdrop:SetPoint("BOTTOMRIGHT", -34, 82)
-    TALENT_FRAME:SetHitRectInsets(13,34,0,82)
+    TALENT_FRAME:SetHitRectInsets(13,-34,0,82)
     -- EnableMovable(TALENT_FRAME)
 
     TALENT_FRAME:DisableDrawLayer("BACKGROUND")
@@ -31,7 +31,7 @@ pfUI:RegisterSkin("Talents", function ()
     SkinScrollbar(_G[TALENT_FRAME_NAME.."ScrollFrameScrollBar"])
 
     _G[TALENT_FRAME_NAME.."TalentPointsText"]:ClearAllPoints()
-    _G[TALENT_FRAME_NAME.."TalentPointsText"]:SetPoint("BOTTOMRIGHT", TALENT_FRAME, "BOTTOMRIGHT", -65, 83)
+    _G[TALENT_FRAME_NAME.."TalentPointsText"]:SetPoint("BOTTOMRIGHT", TALENT_FRAME, "BOTTOMRIGHT", -65, 88)
 
     for i = 1, MAX_NUM_TALENTS do
       local talent = _G[TALENT_FRAME_NAME.."Talent"..i]
@@ -45,7 +45,7 @@ pfUI:RegisterSkin("Talents", function ()
 
     _G[TALENT_FRAME_NAME.."Tab1"]:ClearAllPoints()
     _G[TALENT_FRAME_NAME.."Tab1"]:SetPoint("TOPLEFT", TALENT_FRAME.backdrop, "BOTTOMLEFT", bpad, -(border + (border == 1 and 1 or 2)))
-    for i = 1, 5 do
+    for i = 1, 3 do
       local tab = _G[TALENT_FRAME_NAME.."Tab"..i]
       local lastTab = _G[TALENT_FRAME_NAME.."Tab"..(i-1)]
       if lastTab then

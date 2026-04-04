@@ -59,7 +59,7 @@ pfUI:RegisterModule("panel", function()
             widget.timerFrame:Show()
           end
         elseif arg1 == "RightButton" then
-          widget.timerFrame.Snapshot = GetTime()
+			widget.timerFrame.Snapshot = GetTime() 
         end
       end
       widget:SetScript("OnUpdate",function()
@@ -129,17 +129,41 @@ pfUI:RegisterModule("panel", function()
       widget.combat:RegisterEvent("PLAYER_REGEN_DISABLED")
       widget.combat:SetScript("OnEvent", function()
         if event == "PLAYER_REGEN_DISABLED" then
-          if UnitAffectingCombat("player") and not this.combat then
-            this.combat = GetTime()
-          end
-
+			if UnitAffectingCombat("player") and not this.combat then
+			  this.combat = GetTime()
+			  
+			  -- 进入战斗：关闭团队buff指示器显示
+			  if pfUI_config.unitframes.raid then
+				pfUI_config.unitframes.raid.show_buffs = "0"
+				
+				-- 刷新所有团队单位框架
+				for i = 1, 40 do
+				  local frame = _G["pfRaid" .. i]
+				  if frame then
+					frame.indicators = nil
+					pfUI.uf:RefreshUnit(frame, "aura")
+				  end
+				end
+			  end
+			end
         elseif event == "PLAYER_REGEN_ENABLED" then
-          if this.combat then
-            this.lastcombat = GetTime() - this.combat
-            this.combat = nil
-            pfUI.panel:OutputPanel("combat", "|cffffffff" .. SecondsToTime(ceil(this.lastcombat)))
-          end
-
+			if this.combat then
+			  this.lastcombat = GetTime() - this.combat
+			  this.combat = nil
+			  pfUI.panel:OutputPanel("combat", "|cffffffff" .. SecondsToTime(ceil(this.lastcombat)))
+				-- 离开战斗：开启团队buff指示器显示
+				if pfUI_config.unitframes.raid then
+					pfUI_config.unitframes.raid.show_buffs = "1"
+					-- 刷新所有团队单位框架
+					for i = 1, 40 do
+					local frame = _G["pfRaid" .. i]
+						if frame then
+							frame.indicators = nil
+							pfUI.uf:RefreshUnit(frame, "aura")
+						end
+					end
+				end
+				end
         elseif event == "PLAYER_ENTERING_WORLD" then
           pfUI.panel:OutputPanel("combat", T["Combat"] .. ": " .. NOT_APPLICABLE)
         end

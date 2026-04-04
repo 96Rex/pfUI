@@ -785,13 +785,27 @@ pfUI:RegisterModule("chat", function ()
 
     -- reduce channel name to number
     if C.chat.text.channelnumonly == "1" then
-      local channel = string.gsub(text, ".*%[(.-)%]%s+(.*|Hplayer).+", "%1")
-      if string.find(channel, "%d+%. ") then
-        channel = string.gsub(channel, "(%d+)%..*", "channel%1")
-        channel = string.gsub(channel, "channel", "")
-        text = string.gsub(text, "%[%d+%..-%]%s+(.*|Hplayer)", left .. channel .. right .. " %1")
-      end
-    end
+		local channel = string.gsub(text, ".*%[(.-)%]%s+(.*|Hplayer).+", "%1")
+		if string.find(channel, "%d+%. ") then
+			-- channel = string.gsub(channel, "(%d+)%..*", "channel%1")
+			-- channel = string.gsub(channel, "channel", "")
+			local channelNum = string.gsub(channel, "(%d+)%..*", "%1")
+			local channelName = string.gsub(channel, "%d+%.%s*(.*)", "%1")
+			local displayText = channelNum
+			-- 自定义简写规则（不区分大小写）
+			if string.find(channelName, "[Cc]hina") then
+				displayText = "中"
+			elseif string.find(channelName, "[Ww]orld") then
+				displayText = "世"
+			-- 你可以在这里继续添加更多规则
+			end
+			
+		text = string.gsub(text, "%[%d+%..-%]%s+(.*|Hplayer)", left .. displayText .. right .. " %1")
+
+
+
+		end
+	end
 
     -- show timestamp in chat
     if C.chat.text.time == "1" then

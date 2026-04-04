@@ -8,7 +8,7 @@ pfUI:RegisterSkin("Spellbook", function ()
 
   SpellBookFrame.backdrop:SetPoint("TOPLEFT", 13, 0)
   SpellBookFrame.backdrop:SetPoint("BOTTOMRIGHT", -34, 82)
-  SpellBookFrame:SetHitRectInsets(13,34,0,82)
+  SpellBookFrame:SetHitRectInsets(13,-34,0,82)
   -- EnableMovable(SpellBookFrame)
 
   SpellBookTitleText:ClearAllPoints()

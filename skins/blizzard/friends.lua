@@ -18,7 +18,7 @@ pfUI:RegisterSkin("Friends", function ()
   FriendsFrameTitleText:SetPoint("TOP", FriendsFrame.backdrop, "TOP", 0, -10)
 
   FriendsFrameTab1:ClearAllPoints()
-  FriendsFrameTab1:SetPoint("TOPLEFT", FriendsFrame.backdrop, "BOTTOMLEFT", border, -2*border)
+  FriendsFrameTab1:SetPoint("TOPLEFT", FriendsFrame.backdrop, "BOTTOMLEFT", bpad, -(border + (border == 1 and 1 or 2)))
   for i = 1, maxtab do
     local tab = _G["FriendsFrameTab"..i]
     local lastTab = _G["FriendsFrameTab"..(i-1)]

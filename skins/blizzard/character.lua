@@ -1,5 +1,5 @@
 pfUI:RegisterSkin("Character", function ()
-	--获取边框大小和像素化大小
+	--获取配置文件中的边框大小(px)以及用于高清显示的边框大小
 	local rawborder, border = GetBorderSize()
 	--获取内边距
 	local bpad = rawborder > 1 and border - GetPerfectPixel() or GetPerfectPixel()
@@ -41,11 +41,11 @@ pfUI:RegisterSkin("Character", function ()
 	CharacterFrame:SetHitRectInsets(13,34,0,82)
 	--启用可移动性
 	-- EnableMovable("CharacterFrame", nil, CHARACTERFRAME_SUBFRAMES)
-
+	--对关闭按钮进行皮肤化
 	SkinCloseButton(CharacterFrameCloseButton, CharacterFrame.backdrop, -6, -6)
-
+	--禁用纹理层内容的显示
 	CharacterFrame:DisableDrawLayer("ARTWORK")
-
+	--设置角色名字定位偏移
 	CharacterNameText:ClearAllPoints()
 	CharacterNameText:SetPoint("TOP", CharacterFrame.backdrop, "TOP", 0, -10)
 	--定位下方选项卡
@@ -60,7 +60,8 @@ pfUI:RegisterSkin("Character", function ()
 	end
 	SkinTab(tab)
 	end
-
+	
+	--定义装备部位
 	do -- Character Tab
 	local slots = {
 	"HeadSlot",
@@ -84,12 +85,12 @@ pfUI:RegisterSkin("Character", function ()
 	"RangedSlot",
 	"AmmoSlot"
 	}
-
+	--为猎人术士宠物选项卡定位
 	local function RefreshPetPosition()
 	CharacterFrameTab3:ClearAllPoints()
 	CharacterFrameTab3:SetPoint("LEFT", HasPetUI() and CharacterFrameTab2 or CharacterFrameTab1, "RIGHT", border*2 + 1, 0)
 	end
-
+	--为装备格子处理边框色
 	local function RefreshCharacterSlot(slot)
 	local slotId = slot:GetID()
 	local link = GetInventoryItemLink("player", slotId)
@@ -108,7 +109,7 @@ pfUI:RegisterSkin("Character", function ()
 	else
 	slot.backdrop:SetBackdropBorderColor(pfUI.cache.er, pfUI.cache.eg, pfUI.cache.eb, pfUI.cache.ea)
 	end
-
+	--兼容shaguscore
 	if ShaguScore and link then
 	local _, _, itemID = string.find(GetInventoryItemLink("player", slotId), "item:(%d+):%d+:%d+:%d+")
 	local itemLevel = ShaguScore.Database[tonumber(itemID)] or 0
@@ -134,11 +135,11 @@ pfUI:RegisterSkin("Character", function ()
 	RefreshCharacterSlot(slot)
 	end
 	end
-
+	--刷新角色装备格子和宠物选项卡定位
 	HookScript(CharacterFrame, "OnShow", function()
 	RefreshCharacterSlots()
 	RefreshPetPosition()
-
+	--创建装备格子刷新和宠物选项卡钩子
 	if not this.hooked then
 	hooksecurefunc("PaperDollItemSlotButton_Update", function()
 	-- update only character slots!
@@ -150,15 +151,15 @@ pfUI:RegisterSkin("Character", function ()
 	this.hooked = true
 	end
 	end)
-
+	--移除角色模型/属性信息/抗性图标的材质
 	StripTextures(PaperDollFrame)
 	StripTextures(CharacterAttributesFrame)
 	StripTextures(CharacterResistanceFrame)
-
+	--移除角色模型旋转按钮,并使模型允许鼠标拖动旋转
 	EnableClickRotate(CharacterModelFrame)
 	CharacterModelFrameRotateLeftButton:Hide()
 	CharacterModelFrameRotateRightButton:Hide()
-
+	--为抗性图标处理边框和图标裁剪
 	for i,c in pairs(magicResTextureCords) do
 	local magicResFrame = _G["MagicResFrame"..i]
 	magicResFrame:SetWidth(26)
@@ -169,15 +170,13 @@ pfUI:RegisterSkin("Character", function ()
 	SetAllPointsOffset(icon, magicResFrame, 3)
 	icon:SetTexCoord(c[1], c[2], c[3], c[4])
 	end
-
+	--移除所有装备格子的材质,处理装备图标裁剪
 	for _, slotName in pairs(slots) do
 	local frame = _G["Character"..slotName]
 	StripTextures(frame)
 	CreateBackdrop(frame)
 	SetAllPointsOffset(frame.backdrop, frame, 0)
-
 	HandleIcon(frame.backdrop, _G["Character"..slotName.."IconTexture"])
-
 	if not frame.scoreText then
 	frame.scoreText = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 	frame.scoreText:SetFont(pfUI.font_default, 12, "OUTLINE")

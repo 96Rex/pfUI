@@ -128,10 +128,10 @@ pfUI:RegisterSkin("Mailbox", function ()
   CreateBackdrop(MailFrame, nil, nil, .75)
   CreateBackdropShadow(MailFrame)
 
-  MailFrame.backdrop:SetPoint("TOPLEFT", 12, -12)
-  MailFrame.backdrop:SetPoint("BOTTOMRIGHT", -30, 72)
-  MailFrame:SetHitRectInsets(12,30,12,72)
-  EnableMovable(MailFrame)
+  -- MailFrame.backdrop:SetPoint("TOPLEFT", 13, 0)
+  -- MailFrame.backdrop:SetPoint("BOTTOMRIGHT", -34, 82)
+  -- MailFrame:SetHitRectInsets(13,34,0,82)
+  -- EnableMovable(MailFrame)
 
   SkinCloseButton(InboxCloseButton, MailFrame.backdrop, -6, -6)
 
@@ -199,9 +199,9 @@ pfUI:RegisterSkin("Mailbox", function ()
   do -- OpenMailFrame
     StripTextures(OpenMailFrame)
     CreateBackdrop(OpenMailFrame, nil, nil, .75)
-    OpenMailFrame.backdrop:SetPoint("TOPLEFT", 10, -10)
-    OpenMailFrame.backdrop:SetPoint("BOTTOMRIGHT", -32, 72)
-    OpenMailFrame:SetHitRectInsets(10,32,10,72)
+    OpenMailFrame.backdrop:SetPoint("TOPLEFT", 13, 0)
+    OpenMailFrame.backdrop:SetPoint("BOTTOMRIGHT", -34, 82)
+    OpenMailFrame:SetHitRectInsets(13,34,0,82)
 
     SkinCloseButton(OpenMailCloseButton, OpenMailFrame.backdrop, -6, -6)
 
