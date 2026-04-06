@@ -886,4 +886,5 @@ pfUI_translation["enUS"] = {
   ["Display Raid Group Label"] = nil,
   ["Group Label X-Offset"] = nil,
   ["Group Label Y-Offset"] = nil,
+  ["s"] = nil,
 }

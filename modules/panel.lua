@@ -150,7 +150,7 @@ pfUI:RegisterModule("panel", function()
 			if this.combat then
 			  this.lastcombat = GetTime() - this.combat
 			  this.combat = nil
-			  pfUI.panel:OutputPanel("combat", "|cffffffff" .. SecondsToTime(ceil(this.lastcombat)))
+			  pfUI.panel:OutputPanel("combat", "|cffffffff" .. ceil(this.lastcombat) .. T["s"])
 				-- 离开战斗：开启团队buff指示器显示
 				if pfUI_config.unitframes.raid then
 					pfUI_config.unitframes.raid.show_buffs = "1"
@@ -172,7 +172,7 @@ pfUI:RegisterModule("panel", function()
         if not this.tick then this.tick = GetTime() end
         if GetTime() <= this.tick + 1 then return else this.tick = GetTime() end
         if this.combat then
-          pfUI.panel:OutputPanel("combat", "|cffffaaaa" .. SecondsToTime(ceil(GetTime() - this.combat)))
+          pfUI.panel:OutputPanel("combat", "|cffffaaaa" .. ceil(GetTime() - this.combat) .. T["s"])
         end
       end)
     end

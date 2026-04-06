@@ -885,5 +885,6 @@ pfUI_translation["zhCN"] = {
   ["Zoom Target Nameplate"] = "放大目标姓名板",
   ["Display Raid Group Label"] = "显示小队标签",
   ["Group Label X-Offset"] = "┗水平偏移",
-  ["Group Label Y-Offset"] = "┗垂直偏移"
+  ["Group Label Y-Offset"] = "┗垂直偏移",
+  ["s"] = "秒",
 }
