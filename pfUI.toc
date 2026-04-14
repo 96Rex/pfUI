@@ -4,8 +4,7 @@
 ## Notes: A complete user interface replacement.
 ## Notes-zhCN: 一款现代简约的用户界面.
 ## Version: 5.5.4
-## SavedVariables: pfUI_profiles, pfUI_addon_profiles, pfUI_cache, pfUI_playerDB
-## SavedVariablesPerCharacter: pfUI_config, pfUI_init
+## SavedVariables: pfUI_profiles, pfUI_addon_profiles, pfUI_cache, pfUI_playerDB ,pfUI_config, pfUI_init
 pfUI.lua
 
 init\env.xml

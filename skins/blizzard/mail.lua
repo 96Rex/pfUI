@@ -128,10 +128,10 @@ pfUI:RegisterSkin("Mailbox", function ()
   CreateBackdrop(MailFrame, nil, nil, .75)
   CreateBackdropShadow(MailFrame)
 
-  -- MailFrame.backdrop:SetPoint("TOPLEFT", 13, 0)
-  -- MailFrame.backdrop:SetPoint("BOTTOMRIGHT", -34, 82)
-  -- MailFrame:SetHitRectInsets(13,34,0,82)
-  -- EnableMovable(MailFrame)
+  MailFrame.backdrop:SetPoint("TOPLEFT", 13, 0)
+  MailFrame.backdrop:SetPoint("BOTTOMRIGHT", -34, 82)
+  MailFrame:SetHitRectInsets(13,34,0,82)
+  EnableMovable(MailFrame)
 
   SkinCloseButton(InboxCloseButton, MailFrame.backdrop, -6, -6)
 
